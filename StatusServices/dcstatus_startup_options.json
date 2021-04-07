@@ -1,0 +1,14 @@
+{
+  "FastSpeedIntervalMs": 250,
+  "SlowSpeedIntervalMs": 1000,
+  "LEDCycleDurationMs": 2000,
+  "AppStatusGPIO": 45,
+  "PowerLineStatusGPIO": 44,
+  "ApplicationMode": "app",
+  "PingIntervalSecs": 2,
+  "LogTo": "console",
+  "LogLevel": "information",
+  "MaxLogFileSizeMB": 1,
+  "MaxCountFiles": 5,
+  "LogFileName": "ss_app_log.txt"
+}
