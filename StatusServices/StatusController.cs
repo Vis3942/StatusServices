@@ -46,10 +46,25 @@ namespace StatusServices
             ds_timer.Elapsed += Ds_timer_Elapsed;
             ds_timer.AutoReset = true;
             ds_timer.Enabled = false;
-            www_timer = new System.Timers.Timer(60 * 1000);
-            www_timer.Elapsed += Www_timer_Elapsed;
-            www_timer.AutoReset = true;
-            www_timer.Enabled = true;
+            if (!AppOptions.GetAppOptions.UsesCellularConnection)
+            {
+                // does not use cellular to connect to the internet
+                internet_available = false;
+                www_timer = new System.Timers.Timer(60 * 1000);
+                www_timer.Elapsed += Www_timer_Elapsed;
+                www_timer.AutoReset = true;
+                www_timer.Enabled = true;
+            }
+            else
+            {
+                // uses cellular for internet connection
+                // do not generate any ping packets: adds a lot of additional cellular usage costs
+                // therefore skip ping completely and depend only on the DCDataServices Success/Failure uploads
+                internet_available = true; 
+                // always true for cellular connection, so the led state will depend only 
+                // on the DC Data Services data upload success / failure
+                www_timer = null;
+            }
         
         }
 

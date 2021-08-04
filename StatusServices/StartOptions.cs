@@ -20,5 +20,6 @@ namespace StatusServices
         public float MaxLogFileSizeMB { get; set; }
         public int MaxCountFiles { get; set; }
         public string LogFileName { get; set; }
+        public bool UsesCellularConnection { get; set; }
     }
 }
